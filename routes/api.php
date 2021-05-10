@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,3 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware('auth:sanctum')->get('/users', [UserController::class,'index']);
+Route::get('/users/{user}', [UserController::class,'show']);
+Route::put('/users/{user}', [UserController::class,'update']);
+Route::delete('/users/{user}', [UserController::class,'destroy']);
+
+// Route::resource('users', UserController::class)->except(['edit','edit']);
